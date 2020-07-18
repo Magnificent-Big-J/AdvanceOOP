@@ -58,6 +58,9 @@ class Container
 
         return $this->battleManager;
     }
+    /**
+     * @return ShipStorageInterface
+     */
     public function getShipStorage()
     {
         if($this->shipStorage === null) {

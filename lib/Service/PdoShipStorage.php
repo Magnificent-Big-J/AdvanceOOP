@@ -1,7 +1,7 @@
 <?php
 
 
-class PdoShipStorage
+class PdoShipStorage implements ShipStorageInterface
 {
     private $pdo;
 
@@ -10,7 +10,7 @@ class PdoShipStorage
         $this->pdo = $pdo;
     }
 
-    public function fetchAllShipData()
+    public function fetchAllShipsData()
     {
         $pdo = $this->pdo;
         $statement = $pdo->prepare('SELECT * FROM ship');

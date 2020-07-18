@@ -5,7 +5,7 @@ class ShipLoader
 {
     private $shipStorage;
 
-    public function __construct(PdoShipStorage $shipStorage)
+    public function __construct(ShipStorageInterface $shipStorage)
     {
       $this->shipStorage = $shipStorage;
     }
@@ -15,7 +15,7 @@ class ShipLoader
      */
     public function getShips()
     {
-        $shipsData = $this->shipStorage->fetchAllShipData();
+        $shipsData = $this->shipStorage->fetchAllShipsData();
         $ships = array();
 
         foreach ($shipsData as $shipData) {
