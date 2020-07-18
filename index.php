@@ -4,7 +4,8 @@ require __DIR__ . '/bootstrap.php';
 $container = new Container($configuration);
 $shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();
-
+$brokenShip = new BrokenShip('Fox 1254');
+$ships[] = $brokenShip;
 
 $errorMessage = '';
 if (isset($_GET['error'])) {
