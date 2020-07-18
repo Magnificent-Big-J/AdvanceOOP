@@ -1,49 +1,13 @@
 <?php
 
-class Ship
+class Ship extends AbstractShip
 {
-    private $id;
-    private $name;
-    private $weaponPower = 0;
     private $jediFactor = 0;
-    private $strength = 0;
     private $underRepair;
-
     public function __construct($name)
     {
-        $this->name = $name;
+        parent::__construct($name);
         $this->underRepair = mt_rand(1,100) < 30;
-    }
-
-    /**
-     * @return bool
-     */
-
-    public function isFunctional()
-    {
-        return !$this->underRepair;
-    }
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-    /**
-     * @return int
-     */
-    public function getWeaponPower()
-    {
-        return $this->weaponPower;
-    }
-
-    /**
-     * @param int $weaponPower
-     */
-    public function setWeaponPower($weaponPower)
-    {
-        $this->weaponPower = $weaponPower;
     }
 
     /**
@@ -62,77 +26,13 @@ class Ship
         $this->jediFactor = $jediFactor;
     }
     /**
-     * @return int
-     */
-    public function getStrength()
-    {
-        return $this->strength;
-    }
-
-    /**
-     * @param int $strength
-     */
-    public function setStrength($strength)
-    {
-        if (!is_numeric($strength)) {
-            throw new Exception('Invalid strength value passed: '. $strength);
-        }
-        $this->strength = $strength;
-    }
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param $useShortFormat
-     * @return string
+     * @return bool
      */
 
-    public function getNameAndSpecs($useShortFormat = false)
+    public function isFunctional()
     {
-        if ($useShortFormat) {
-            return sprintf(
-                '%s: %s/%s/%s',
-                $this->getName(),
-                $this->getWeaponPower(),
-                $this->getJediFactor(),
-                $this->getStrength()
-            );
-        } else {
-            return sprintf(
-                '%s: w:%s, j:%s, s:%s',
-                $this->getName(),
-                $this->getWeaponPower(),
-                $this->getJediFactor(),
-                $this->getStrength()
-            );
-        }
+        return !$this->underRepair;
     }
-    public function doesGivenShipHaveMoreStrength($givenShip)
-    {
-        return $givenShip->strength > $this->strength;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param integer
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
     /**
      * @return string
      */
@@ -140,6 +40,5 @@ class Ship
     {
         return 'Empire';
     }
-
 
 }
