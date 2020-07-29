@@ -1,7 +1,10 @@
 <?php
-require __DIR__ . '/bootstrap.php';
+use Service\Container;
+
+require __DIR__.'/bootstrap.php';
 
 $container = new Container($configuration);
+
 $shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();
 
